@@ -1,0 +1,16 @@
+{
+    "name": "administrateur/ehpad",
+    "autoload": {
+        "psr-4": {
+            "Administrateur\\Ehpad\\": "src/",
+            "Model\\": "src/model",
+            "Controller\\":"src/controller"
+        }
+    },
+    "authors": [
+        {
+            "name": "Moi"
+        }
+    ],
+    "require": {}
+}
