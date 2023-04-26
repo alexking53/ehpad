@@ -10,8 +10,7 @@ class Rechercher extends Controller
         if (isset($_POST['n_cherche'])) {
             $this->laRecherche = $_POST['n_cherche'];
             
-            $model = Model::load('NomDuModele');
-            $resultats = $model->find(Model::$pdo, [
+            $resultats = find(Model::$pdo, [
                 'condition' => "service.DESCRIPTION LIKE '%$this->laRecherche%' OR service.TITRE LIKE '%$this->laRecherche%' OR categorie.LIBELE LIKE '%$this->laRecherche%'",
                 'join' => "INNER JOIN categorie ON service.CAT=categorie.NUMERO"
             ]);

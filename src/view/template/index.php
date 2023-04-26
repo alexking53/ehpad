@@ -22,7 +22,7 @@
                         <span class="nav-item">
                             <p>
                                 <a class="nav-link" style="display:inline" href="<?=
-                                WEBROOT ?>Accueil"><i class="bi bi-activity"></i>
+                                WEBROOT ?> accueil"><i class="bi bi-activity"></i>
                                 Ehpad <i>Discount</i></a>
                             </p>
                         </span>
@@ -60,6 +60,31 @@
                 <i class="bi bi-circle"></i></p>
             </div>
         </div>
+
+        <?php
+            if (isset($_SESSION['LOGIN'])) {
+                echo '<script>
+                var elem1 = document.querySelectorAll("#navigation li")[2];
+                elem1.innerHTML="<a class=\"nav-link\" href=\"' . URL . 'Connexion/deconnexion\">Deconnexion</a>";
+                var total=document.querySelectorAll("#navigation li").length;
+                var elem2 = "<a class=\"nav-link\" href=\"' . URL . 'profil\">Profil</a>";
+                document.querySelector("#navigation>nav>ul").append(document.createElement("li"));
+                document.querySelectorAll("#navigation li")[total].innerHTML=elem2;
+                console.log(total);
+                var temp = document.querySelectorAll("#navigation li")[total-1].innerHTML;
+                document.querySelectorAll("#navigation li")[total-1].innerHTML=document.querySelectorAll("#navigation li")[total].innerHTML;
+                document.querySelectorAll("#navigation li")[total].innerHTML=temp;
+                </script>';
+            }
+        ?>
+        <?php
+            if (isset($_SESSION['totalpanier']) && $_SESSION['totalpanier'] != 0) {
+            echo '<script>
+                document . querySelectorAll("#navigation li")[3] . innerHTML = \'<a class="nav-link" href="' . URL . '/Panier">Panier</a><i class="badge badge-light" style="background-color:orangered;"> ' .
+                $_SESSION['totalpanier'] . '</i>\'
+            </script>';
+            }
+        ?>
         
         <script>
             const tab = [
